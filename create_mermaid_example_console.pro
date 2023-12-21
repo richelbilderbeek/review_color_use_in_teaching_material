@@ -1,5 +1,6 @@
-SOURCES += main.cpp \
-  mermaid_text.cpp
+include(create_mermaid_example.pri)
+
+SOURCES += main.cpp
 
 # High warning levels
 # Qt does not go well with -Weffc++
@@ -55,6 +56,3 @@ QT -= core gui widgets
 #   BOOST_DEFINE_MATH_CONSTANT(half, 5.000000000000000000000000000000000000e-01, "5.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000e-01")
 #   ^
 #QMAKE_CXXFLAGS += -fext-numeric-literals
-
-HEADERS += \
-  mermaid_text.h
