@@ -9,5 +9,9 @@ void test() {
 
 int main() {
   test();
-  std::cout << mermaid_text(get_all_color_names(), "c") << '\n';
+  std::cout << mermaid_text(
+    get_all_color_names(),
+    { "0", "9", "c", "f"},
+    "c"
+  ) << '\n';
 }

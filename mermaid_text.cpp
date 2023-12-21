@@ -8,9 +8,11 @@
 
 mermaid_text::mermaid_text(
   const std::vector<std::string>& color_names,
+  const std::vector<std::string>& node_saturations,
   const std::string& saturation
 ) : m_color_names{color_names},
-    m_saturation{saturation}
+    m_node_saturations{node_saturations},
+    m_subgraph_saturation{saturation}
 {
 
 }
@@ -29,6 +31,11 @@ std::vector<std::string> get_all_color_names() noexcept {
   };
 }
 
+std::vector<std::string> get_all_hex_values() noexcept
+{
+  return { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f" };
+}
+
 std::vector<std::string> get_header_text() noexcept
 {
   return
@@ -38,18 +45,15 @@ std::vector<std::string> get_header_text() noexcept
   };
 }
 
-std::vector<std::string> get_hex_values() noexcept
-{
-  return { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f" };
-}
 
 std::vector<std::string> get_invisible_edges(
   const std::string& color_name_1,
-  const std::string& color_name_2
+  const std::string& color_name_2,
+  const std::vector<std::string>& node_saturations
 ) noexcept
 {
-  const auto& node_names_1{get_node_names(color_name_1)};
-  const auto& node_names_2{get_node_names(color_name_2)};
+  const auto& node_names_1{get_node_names(color_name_1, node_saturations)};
+  const auto& node_names_2{get_node_names(color_name_2, node_saturations)};
   assert(node_names_1.size() == node_names_2.size());
   const int n_nodes = node_names_1.size();
   std::vector<std::string> text;
@@ -79,10 +83,13 @@ std::string get_node_fill_color(const std::string& color_name, const std::string
   return "";
 }
 
-std::vector<std::string> get_node_fill_colors(const std::string& color_name) noexcept
+std::vector<std::string> get_node_fill_colors(
+  const std::string& color_name,
+  const std::vector<std::string>& node_saturations
+) noexcept
 {
   std::vector<std::string> text;
-  for (const auto& node_number: get_hex_values()) {
+  for (const auto& node_number: node_saturations) {
     text.push_back(get_node_fill_color(color_name, node_number));
   }
   return text;
@@ -93,19 +100,26 @@ std::string get_node_name(const std::string& color_name, const std::string& node
   return { color_name + "_" + node_number };
 }
 
-std::vector<std::string> get_node_names(const std::string& color_name) noexcept
+std::vector<std::string> get_node_names(
+  const std::string& color_name,
+  const std::vector<std::string>& node_saturations
+) noexcept
 {
   std::vector<std::string> text;
-  for (const auto& node_number: get_hex_values()) {
+  for (const auto& node_number: node_saturations) {
     text.push_back(get_node_name(color_name, node_number));
   }
   return text;
 }
 
-std::vector<std::string> get_node_styles(const std::string& color_name) noexcept
+std::vector<std::string> get_node_styles(
+  const std::string& color_name,
+  const std::vector<std::string>& node_saturations
+) noexcept
 {
-  const auto node_names{get_node_names(color_name)};
-  const auto node_fill_colors{get_node_fill_colors(color_name)};
+  const auto node_names{get_node_names(color_name, node_saturations)};
+  const auto node_fill_colors{
+    get_node_fill_colors(color_name, node_saturations)};
   assert(node_names.size() == node_fill_colors.size());
 
   std::vector<std::string> text;
@@ -125,19 +139,20 @@ std::vector<std::string> get_node_styles(const std::string& color_name) noexcept
 
 std::vector<std::string> get_subgraph(
   const std::string& color_name,
-  const std::string& saturation
+  const std::vector<std::string>& node_saturations,
+  const std::string& subgraph_saturation
 ) noexcept
 {
   std::vector<std::string> text;
   text.push_back("    subgraph sub_" + color_name);
-  for (const auto& node_name: get_node_names(color_name)) {
+  for (const auto& node_name: get_node_names(color_name, node_saturations)) {
     text.push_back(std::string("        ") + node_name);
   }
-  for (const auto& node_style: get_node_styles(color_name)) {
+  for (const auto& node_style: get_node_styles(color_name, node_saturations)) {
     text.push_back(std::string("        ") + node_style);
   }
   text.push_back("    end");
-  text.push_back("    " + get_subgraph_style(color_name, saturation));
+  text.push_back("    " + get_subgraph_style(color_name, subgraph_saturation));
   return text;
 }
 
@@ -178,7 +193,7 @@ std::vector<std::string> mermaid_text::to_text() const {
   std::vector<std::string> text{get_header_text()};
   // Create the subgraphs
   for (const auto& color_name: m_color_names) {
-    for (const auto& line: get_subgraph(color_name, m_saturation)) {
+    for (const auto& line: get_subgraph(color_name, m_node_saturations, m_subgraph_saturation)) {
       text.push_back(line);
     }
   }
@@ -193,7 +208,7 @@ std::vector<std::string> mermaid_text::to_text() const {
     const std::string& color_name_1{m_color_names[i]};
     const std::string& color_name_2{m_color_names[j]};
     assert(color_name_1 != color_name_2);
-    for (const auto& line: get_invisible_edges(color_name_1, color_name_2)) {
+    for (const auto& line: get_invisible_edges(color_name_1, color_name_2, m_node_saturations)) {
       text.push_back("    " + line);
     }
   }
@@ -205,7 +220,7 @@ void mermaid_text_test() {
   // Must have text
   {
     std::stringstream s;
-    s << mermaid_text(get_all_color_names(), "c");
+    s << mermaid_text(get_all_color_names(), get_all_hex_values(), "c");
     assert(!s.str().empty());
   }
   // Can get the header text
@@ -214,23 +229,23 @@ void mermaid_text_test() {
   }
   // There are 16 hex values
   {
-    assert(get_hex_values().size() == 16);
+    assert(get_all_hex_values().size() == 16);
   }
   // There are 16 node names
   {
-    assert(get_node_names("red").size() == 16);
+    assert(get_node_names("red", get_all_hex_values()).size() == 16);
   }
   // There are 16 node fill colors
   {
-    assert(get_node_fill_colors("red").size() == 16);
+    assert(get_node_fill_colors("red", get_all_hex_values()).size() == 16);
   }
   // There are 16 node styles
   {
-    assert(get_node_styles("red").size() == 16);
+    assert(get_node_styles("red", get_all_hex_values()).size() == 16);
   }
   // A subgraph has 1 + 16 + 16 + 1 + 1 lines
   {
-    assert(get_subgraph("red", "c").size() == 35);
+    assert(get_subgraph("red", get_all_hex_values(), "c").size() == 35);
   }
 }
 

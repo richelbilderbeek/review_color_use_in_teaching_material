@@ -111,153 +111,146 @@ Overall, these references suggest that the colored image more closely follows th
 
 ## Example
 
+My preference is:
+
+ * Use `c` as subgraph background saturation, e.g. `#fcc` for red
+ * Use `9` as node color saturation when the node needs not to be stressed, e.g. `#f99` for red
+ * Use `0` as node color saturation when the node needs to be stressed, e.g. `#f00` for red
 
 ```
 %% Direction is top->down
 flowchart TD
-
-    %% Give a white background, instead of a transparent one
-    %% classDef node fill:#fff,color:#000,stroke:#000
-    
-    subgraph sub_red["Red background"]
-      red_0
-      red_1
-      red_2
-      red_3
-      red_4
-      red_5
-      red_6
-      red_7
-      red_8
-      red_9
-      red_a
-      red_b
-      red_c
-      red_d
-      red_e
-      red_f
-      style red_0 fill:#f00,color:#000,stroke:#000
-      style red_1 fill:#f11,color:#000,stroke:#000
-      style red_2 fill:#f22,color:#000,stroke:#000
-      style red_3 fill:#f33,color:#000,stroke:#000
-      style red_4 fill:#f44,color:#000,stroke:#000
-      style red_5 fill:#f55,color:#000,stroke:#000
-      style red_6 fill:#f66,color:#000,stroke:#000
-      style red_7 fill:#f77,color:#000,stroke:#000
-      style red_8 fill:#f88,color:#000,stroke:#000
-      style red_9 fill:#f99,color:#000,stroke:#000
-      style red_a fill:#faa,color:#000,stroke:#000
-      style red_b fill:#fbb,color:#000,stroke:#000
-      style red_c fill:#fcc,color:#000,stroke:#000
-      style red_d fill:#fdd,color:#000,stroke:#000
-      style red_e fill:#fee,color:#000,stroke:#000
-      style red_f fill:#fff,color:#000,stroke:#000
+    subgraph sub_red
+        red_0
+        red_9
+        red_c
+        red_f
+        style red_0 fill:#f00,color:#000,stroke:#000
+        style red_9 fill:#f99,color:#000,stroke:#000
+        style red_c fill:#fcc,color:#000,stroke:#000
+        style red_f fill:#fff,color:#000,stroke:#000
     end
     style sub_red fill:#fcc,color:#000,stroke:#fcc
-
-    subgraph sub_green["Green background"]
-      green_0
-      green_1
-      green_2
-      green_3
-      green_4
-      green_5
-      green_6
-      green_7
-      green_8
-      green_9
-      green_a
-      green_b
-      green_c
-      green_d
-      green_e
-      green_f
-      style green_0 fill:#0f0,color:#000,stroke:#000
-      style green_1 fill:#1f1,color:#000,stroke:#000
-      style green_2 fill:#2f2,color:#000,stroke:#000
-      style green_3 fill:#3f3,color:#000,stroke:#000
-      style green_4 fill:#4f4,color:#000,stroke:#000
-      style green_5 fill:#5f5,color:#000,stroke:#000
-      style green_6 fill:#6f6,color:#000,stroke:#000
-      style green_7 fill:#7f7,color:#000,stroke:#000
-      style green_8 fill:#8f8,color:#000,stroke:#000
-      style green_9 fill:#9f9,color:#000,stroke:#000
-      style green_a fill:#afa,color:#000,stroke:#000
-      style green_b fill:#bfb,color:#000,stroke:#000
-      style green_c fill:#cfc,color:#000,stroke:#000
-      style green_d fill:#dfd,color:#000,stroke:#000
-      style green_e fill:#efe,color:#000,stroke:#000
-      style green_f fill:#fff,color:#000,stroke:#000
+    subgraph sub_yellow
+        yellow_0
+        yellow_9
+        yellow_c
+        yellow_f
+        style yellow_0 fill:#ff0,color:#000,stroke:#000
+        style yellow_9 fill:#ff9,color:#000,stroke:#000
+        style yellow_c fill:#ffc,color:#000,stroke:#000
+        style yellow_f fill:#fff,color:#000,stroke:#000
+    end
+    style sub_yellow fill:#ffc,color:#000,stroke:#ffc
+    subgraph sub_green
+        green_0
+        green_9
+        green_c
+        green_f
+        style green_0 fill:#0f0,color:#000,stroke:#000
+        style green_9 fill:#9f9,color:#000,stroke:#000
+        style green_c fill:#cfc,color:#000,stroke:#000
+        style green_f fill:#fff,color:#000,stroke:#000
     end
     style sub_green fill:#cfc,color:#000,stroke:#cfc
-
-    subgraph sub_blue["Blue background"]
-      blue_0
-      blue_1
-      blue_2
-      blue_3
-      blue_4
-      blue_5
-      blue_6
-      blue_7
-      blue_8
-      blue_9
-      blue_a
-      blue_b
-      blue_c
-      blue_d
-      blue_e
-      blue_f
-      style blue_0 fill:#00f,color:#000,stroke:#000
-      style blue_1 fill:#11f,color:#000,stroke:#000
-      style blue_2 fill:#22f,color:#000,stroke:#000
-      style blue_3 fill:#33f,color:#000,stroke:#000
-      style blue_4 fill:#44f,color:#000,stroke:#000
-      style blue_5 fill:#55f,color:#000,stroke:#000
-      style blue_6 fill:#66f,color:#000,stroke:#000
-      style blue_7 fill:#77f,color:#000,stroke:#000
-      style blue_8 fill:#88f,color:#000,stroke:#000
-      style blue_9 fill:#99f,color:#000,stroke:#000
-      style blue_a fill:#aaf,color:#000,stroke:#000
-      style blue_b fill:#bbf,color:#000,stroke:#000
-      style blue_c fill:#ccf,color:#000,stroke:#000
-      style blue_d fill:#ddf,color:#000,stroke:#000
-      style blue_e fill:#eef,color:#000,stroke:#000
-      style blue_f fill:#fff,color:#000,stroke:#000
+    subgraph sub_cyan
+        cyan_0
+        cyan_9
+        cyan_c
+        cyan_f
+        style cyan_0 fill:#0ff,color:#000,stroke:#000
+        style cyan_9 fill:#9ff,color:#000,stroke:#000
+        style cyan_c fill:#cff,color:#000,stroke:#000
+        style cyan_f fill:#fff,color:#000,stroke:#000
+    end
+    style sub_cyan fill:#cff,color:#000,stroke:#cff
+    subgraph sub_blue
+        blue_0
+        blue_9
+        blue_c
+        blue_f
+        style blue_0 fill:#00f,color:#000,stroke:#000
+        style blue_9 fill:#99f,color:#000,stroke:#000
+        style blue_c fill:#ccf,color:#000,stroke:#000
+        style blue_f fill:#fff,color:#000,stroke:#000
     end
     style sub_blue fill:#ccf,color:#000,stroke:#ccf
+    subgraph sub_magenta
+        magenta_0
+        magenta_9
+        magenta_c
+        magenta_f
+        style magenta_0 fill:#f0f,color:#000,stroke:#000
+        style magenta_9 fill:#f9f,color:#000,stroke:#000
+        style magenta_c fill:#fcf,color:#000,stroke:#000
+        style magenta_f fill:#fff,color:#000,stroke:#000
+    end
+    style sub_magenta fill:#fcf,color:#000,stroke:#fcf
+    subgraph sub_white
+        white_0
+        white_9
+        white_c
+        white_f
+        style white_0 fill:#fff,color:#000,stroke:#000
+        style white_9 fill:#fff,color:#000,stroke:#000
+        style white_c fill:#fff,color:#000,stroke:#000
+        style white_f fill:#fff,color:#000,stroke:#000
+    end
+    style sub_white fill:#fff,color:#000,stroke:#fff
+    subgraph sub_grey
+        grey_0
+        grey_9
+        grey_c
+        grey_f
+        style grey_0 fill:#000,color:#000,stroke:#000
+        style grey_9 fill:#999,color:#000,stroke:#000
+        style grey_c fill:#ccc,color:#000,stroke:#000
+        style grey_f fill:#fff,color:#000,stroke:#000
+    end
+    style sub_grey fill:#ccc,color:#000,stroke:#ccc
+    subgraph sub_black
+        black_0
+        black_9
+        black_c
+        black_f
+        style black_0 fill:#000,color:#000,stroke:#000
+        style black_9 fill:#000,color:#000,stroke:#000
+        style black_c fill:#000,color:#000,stroke:#000
+        style black_f fill:#000,color:#000,stroke:#000
+    end
+    style sub_black fill:#000,color:#000,stroke:#000
 
-    %% get boxes above each other, using invisible edges
-    red_0 ~~~ green_0
-    red_1 ~~~ green_1
-    red_2 ~~~ green_2
-    red_3 ~~~ green_3
-    red_4 ~~~ green_4
-    red_5 ~~~ green_5
-    red_6 ~~~ green_6
-    red_7 ~~~ green_7
-    red_8 ~~~ green_8
-    red_9 ~~~ green_9
-    red_a ~~~ green_a
-    red_b ~~~ green_b
-    red_c ~~~ green_c
-    red_d ~~~ green_d
-    red_e ~~~ green_e
-    red_f ~~~ green_f
-    green_0 ~~~ blue_0
-    green_1 ~~~ blue_1
-    green_2 ~~~ blue_2
-    green_3 ~~~ blue_3
-    green_4 ~~~ blue_4
-    green_5 ~~~ blue_5
-    green_6 ~~~ blue_6
-    green_7 ~~~ blue_7
-    green_8 ~~~ blue_8
-    green_9 ~~~ blue_9
-    green_a ~~~ blue_a
-    green_b ~~~ blue_b
-    green_c ~~~ blue_c
-    green_d ~~~ blue_d
-    green_e ~~~ blue_e
-    green_f ~~~ blue_f 
+%% Invisible edges, to align the subgraphs vertically
+    red_0 ~~~ yellow_0
+    red_9 ~~~ yellow_9
+    red_c ~~~ yellow_c
+    red_f ~~~ yellow_f
+    yellow_0 ~~~ green_0
+    yellow_9 ~~~ green_9
+    yellow_c ~~~ green_c
+    yellow_f ~~~ green_f
+    green_0 ~~~ cyan_0
+    green_9 ~~~ cyan_9
+    green_c ~~~ cyan_c
+    green_f ~~~ cyan_f
+    cyan_0 ~~~ blue_0
+    cyan_9 ~~~ blue_9
+    cyan_c ~~~ blue_c
+    cyan_f ~~~ blue_f
+    blue_0 ~~~ magenta_0
+    blue_9 ~~~ magenta_9
+    blue_c ~~~ magenta_c
+    blue_f ~~~ magenta_f
+    magenta_0 ~~~ white_0
+    magenta_9 ~~~ white_9
+    magenta_c ~~~ white_c
+    magenta_f ~~~ white_f
+    white_0 ~~~ grey_0
+    white_9 ~~~ grey_9
+    white_c ~~~ grey_c
+    white_f ~~~ grey_f
+    grey_0 ~~~ black_0
+    grey_9 ~~~ black_9
+    grey_c ~~~ black_c
+    grey_f ~~~ black_f
 ```
