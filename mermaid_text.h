@@ -16,6 +16,27 @@ public:
 
 std::vector<std::string> get_header_text() noexcept;
 
+std::vector<std::string> get_hex_values() noexcept;
+
+std::vector<std::string> get_invisible_edges(
+  const std::string& color_name_1,
+  const std::string& color_name_2
+) noexcept;
+
+std::vector<std::string> get_node_fill_colors(const std::string& color_name) noexcept;
+
+std::string get_node_name(const std::string& color_name, const std::string node_number) noexcept;
+
+std::vector<std::string> get_node_names(const std::string& color_name) noexcept;
+
+std::vector<std::string> get_subgraph(const std::string& color_name) noexcept;
+
+std::string get_subgraph_fill_color(const std::string& color_name) noexcept;
+
+std::string get_subgraph_stroke_color(const std::string& color_name) noexcept;
+
+std::string get_subgraph_style(const std::string& color_name) noexcept;
+
 void mermaid_text_test();
 
 std::ostream& operator<<(std::ostream& os, const mermaid_text& t) noexcept;
