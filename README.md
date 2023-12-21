@@ -117,7 +117,7 @@ My preference is:
  * Use `9` as node color saturation when the node needs not to be stressed, e.g. `#f99` for red
  * Use `0` as node color saturation when the node needs to be stressed, e.g. `#f00` for red
 
-```
+```mermaid
 %% Direction is top->down
 flowchart TD
     subgraph sub_red
