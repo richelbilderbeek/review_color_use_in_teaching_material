@@ -1,20 +1,13 @@
 /// Creates a mermaid flowchart that shows a certain color scheme
 
-#include <cassert>
-
-/// Creates the text of a mermaid flowchart
-/// that shows a certain color scheme
-std::vector<std::string> create_text() {
-
-}
+#include <iostream>
+#include "mermaid_text.h"
 
 void test() {
-  // Must have text
-  {
-    assert(create_text());
-  }
+  mermaid_text_test();
 }
 
 int main() {
-
+  test();
+  std::cout << mermaid_text() << '\n';
 }
