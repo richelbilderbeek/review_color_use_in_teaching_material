@@ -44,5 +44,6 @@ In the context of a website that should help new users use Bianca, an image with
 
 Here are some specific references to academic papers that support these findings:
 
-    "The Effects of Color on Attention and Consumer Behaviour" (Childers et al., 2003) found that high-saturation colors were more effective in capturing attention than low-saturation colors.
-    "The Use of Colour in Graphical User Interfaces" (Ware, 2015) found that consistency in the use of color can help to improve navigation and usability.
+- "The Effects of Color on Attention and Consumer Behaviour" (Childers et al., 2003) found that high-saturation colors were more effective in capturing attention than low-saturation colors.
+- "The Use of Colour in Graphical User Interfaces" (Ware, 2015) found that consistency in the use of color can help to improve navigation and usability.
+
